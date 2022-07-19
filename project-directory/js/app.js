@@ -22,16 +22,15 @@ let Seattle = {
   name: 'Seattle',
   minCPH: 23,
   maxCPH: 65,
-  avgCookieSale: 6.3,
   avgCPH: [],
-  total: 0,
+  avgCookieSale: 6.3,
   totalSales: [],
+  total: 0,
 
   getCust: function(){
     for (let i = 0; i < storeHours.length; i++){
       this.avgCPH.push(randomCust(23,65));
     }
-    console.log(this.avgCPH);
   },
 
   getTotalSales: function(){
@@ -41,7 +40,6 @@ let Seattle = {
       this.totalSales.push(hourlySales);
       this.total += hourlySales;
     }
-    console.log(this.total);
   },
 
   render: function(){
@@ -56,12 +54,12 @@ let Seattle = {
     articleElem.appendChild(h2Elem);
 
     let ulElem = document.createElement('ul');
-    ulElem.textContent = 'Store Hours:';
+    ulElem.textContent = 'Store Hours | Sales per hour';
     articleElem.appendChild(ulElem);
 
     for (let i = 0; i < storeHours.length; i++){
       let liElem = document.createElement('li');
-      liElem.textContent = `${storeHours[i]}; ${this.totalSales[i]}`;
+      liElem.textContent = `${storeHours[i]}: ${this.totalSales[i]}`;
       ulElem.appendChild(liElem);
     }
     let totalElem = document.createElement('li');
@@ -74,9 +72,6 @@ let Seattle = {
 
 // Seattle.getTotalSales();
 Seattle.render();
-console.log(Seattle);
-
-
 
 
 let Tokyo = {
@@ -87,7 +82,52 @@ let Tokyo = {
   avgCPH: [],
   total: 0,
   totalSales: [],
+
+  getCust: function(){
+    for (let i = 0; i < storeHours.length; i++){
+      this.avgCPH.push(randomCust(3,24));
+    }
+  },
+
+  getTotalSales: function(){
+    this.getCust();
+    for (let i = 0; i < this.avgCPH.length; i++){
+      let hourlySales = (multiply(this.avgCookieSale, this.avgCPH[i]));
+      this.totalSales.push(hourlySales);
+      this.total += hourlySales;
+    }
+  },
+
+  render: function(){
+    this.getTotalSales();
+
+    let articleElem = document.createElement('article');
+
+    locations.appendChild(articleElem);
+
+    let h2Elem = document.createElement('h2');
+    h2Elem.textContent = this.name;
+    articleElem.appendChild(h2Elem);
+
+    let ulElem = document.createElement('ul');
+    ulElem.textContent = '';
+    articleElem.appendChild(ulElem);
+
+    for (let i = 0; i < storeHours.length; i++){
+      let liElem = document.createElement('li');
+      liElem.textContent = `${storeHours[i]}: ${this.totalSales[i]}`;
+      ulElem.appendChild(liElem);
+    }
+    let totalElem = document.createElement('li');
+    totalElem.textContent = `Total: ${this.total}`;
+    ulElem.appendChild(totalElem);
+  }
+
+
 };
+
+Tokyo.render();
+
 
 let Dubai = {
   name: 'Dubai',
@@ -97,7 +137,51 @@ let Dubai = {
   avgCPH: [],
   total: 0,
   totalSales: [],
+
+  getCust: function(){
+    for (let i = 0; i < storeHours.length; i++){
+      this.avgCPH.push(randomCust(11,38));
+    }
+  },
+
+  getTotalSales: function(){
+    this.getCust();
+    for (let i = 0; i < this.avgCPH.length; i++){
+      let hourlySales = (multiply(this.avgCookieSale, this.avgCPH[i]));
+      this.totalSales.push(hourlySales);
+      this.total += hourlySales;
+    }
+  },
+
+  render: function(){
+    this.getTotalSales();
+
+    let articleElem = document.createElement('article');
+
+    locations.appendChild(articleElem);
+
+    let h2Elem = document.createElement('h2');
+    h2Elem.textContent = this.name;
+    articleElem.appendChild(h2Elem);
+
+    let ulElem = document.createElement('ul');
+    ulElem.textContent = '';
+    articleElem.appendChild(ulElem);
+
+    for (let i = 0; i < storeHours.length; i++){
+      let liElem = document.createElement('li');
+      liElem.textContent = `${storeHours[i]}: ${this.totalSales[i]}`;
+      ulElem.appendChild(liElem);
+    }
+    let totalElem = document.createElement('li');
+    totalElem.textContent = `Total: ${this.total}`;
+    ulElem.appendChild(totalElem);
+  }
+
 };
+
+Dubai.render();
+
 
 let Paris = {
   name: 'Paris',
@@ -107,7 +191,51 @@ let Paris = {
   avgCPH: [],
   total: 0,
   totalSales: [],
+  getCust: function(){
+    for (let i = 0; i < storeHours.length; i++){
+      this.avgCPH.push(randomCust(20,38));
+    }
+  },
+
+  getTotalSales: function(){
+    this.getCust();
+    for (let i = 0; i < this.avgCPH.length; i++){
+      let hourlySales = (multiply(this.avgCookieSale, this.avgCPH[i]));
+      this.totalSales.push(hourlySales);
+      this.total += hourlySales;
+    }
+  },
+
+  render: function(){
+    this.getTotalSales();
+
+    let articleElem = document.createElement('article');
+
+    locations.appendChild(articleElem);
+
+    let h2Elem = document.createElement('h2');
+    h2Elem.textContent = this.name;
+    articleElem.appendChild(h2Elem);
+
+    let ulElem = document.createElement('ul');
+    ulElem.textContent = '';
+    articleElem.appendChild(ulElem);
+
+    for (let i = 0; i < storeHours.length; i++){
+      let liElem = document.createElement('li');
+      liElem.textContent = `${storeHours[i]}: ${this.totalSales[i]}`;
+      ulElem.appendChild(liElem);
+    }
+    let totalElem = document.createElement('li');
+    totalElem.textContent = `Total: ${this.total}`;
+    ulElem.appendChild(totalElem);
+  }
+
+
 };
+
+Paris.render();
+
 
 let Lima = {
   name: 'Lima',
@@ -117,4 +245,45 @@ let Lima = {
   avgCPH: [],
   total: 0,
   totalSales: [],
+  getCust: function(){
+    for (let i = 0; i < storeHours.length; i++){
+      this.avgCPH.push(randomCust(2,16));
+    }
+  },
+
+  getTotalSales: function(){
+    this.getCust();
+    for (let i = 0; i < this.avgCPH.length; i++){
+      let hourlySales = (multiply(this.avgCookieSale, this.avgCPH[i]));
+      this.totalSales.push(hourlySales);
+      this.total += hourlySales;
+    }
+  },
+
+  render: function(){
+    this.getTotalSales();
+
+    let articleElem = document.createElement('article');
+
+    locations.appendChild(articleElem);
+
+    let h2Elem = document.createElement('h2');
+    h2Elem.textContent = this.name;
+    articleElem.appendChild(h2Elem);
+
+    let ulElem = document.createElement('ul');
+    ulElem.textContent = '';
+    articleElem.appendChild(ulElem);
+
+    for (let i = 0; i < storeHours.length; i++){
+      let liElem = document.createElement('li');
+      liElem.textContent = `${storeHours[i]}: ${this.totalSales[i]}`;
+      ulElem.appendChild(liElem);
+    }
+    let totalElem = document.createElement('li');
+    totalElem.textContent = `Total: ${this.total}`;
+    ulElem.appendChild(totalElem);
+  }
 };
+
+Lima.render();
