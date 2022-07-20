@@ -1,0 +1,69 @@
+table {
+	overflow: hidden;
+	text-align: center;
+	margin-left: 5vw;
+	margin-top: 5px;
+}
+
+body {
+	margin: 2vw;
+	padding: 2vw;
+}
+
+h1 {
+	font-size: 2vw;
+	margin-left: 7vw;
+}
+
+h2 {
+	font-size: 1vw;
+	margin-left: 7vw;
+}
+
+.table {
+	padding-left: 8vw;
+	border-spacing: 1vw;
+}
+
+tc {
+	font-weight: bold;
+	width: 10%;
+	padding: 15.6px;
+	padding-bottom: 10px;
+	border-collapse: collapse;
+	border-spacing: 1vw;
+	table-layout: auto;
+	width: 50px;
+	overflow: hidden;
+	text-align: center;
+}
+
+th {
+	border: 1px solid black;
+	width: 10%;
+	padding: 6px;
+	margin: 1vw;
+	border-collapse: collapse;
+	border-spacing: 1vw;
+	table-layout: auto;
+	width: 50px;
+	overflow: hidden;
+	text-align: center;
+
+}
+
+section #store-locations {
+	margin-inline-start: auto;
+}
+
+main {
+	margin-left: 1vw;
+
+}
+
+
+footer {
+	margin-left: 20vw;
+	margin-top: 2vw;
+	padding-left: 8vw;
+}
