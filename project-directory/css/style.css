@@ -1,9 +1,8 @@
-table {
-	overflow: hidden;
-	text-align: center;
-	margin-left: 5vw;
-	margin-top: 5px;
+main {
+	margin-left: auto;
+	max-width: 960px;
 }
+
 
 body {
 	margin: 2vw;
@@ -20,50 +19,94 @@ h2 {
 	margin-left: 7vw;
 }
 
-.table {
-	padding-left: 8vw;
-	border-spacing: 1vw;
-}
 
-tc {
-	font-weight: bold;
-	width: 10%;
-	padding: 15.6px;
-	padding-bottom: 10px;
-	border-collapse: collapse;
-	border-spacing: 1vw;
-	table-layout: auto;
-	width: 50px;
-	overflow: hidden;
-	text-align: center;
-}
-
-th {
-	border: 1px solid black;
-	width: 10%;
-	padding: 6px;
-	margin: 1vw;
-	border-collapse: collapse;
-	border-spacing: 1vw;
-	table-layout: auto;
-	width: 50px;
-	overflow: hidden;
-	text-align: center;
-
-}
 
 section #store-locations {
 	margin-inline-start: auto;
 }
 
-main {
-	margin-left: 1vw;
-
-}
 
 
 footer {
 	margin-left: 20vw;
 	margin-top: 2vw;
 	padding-left: 8vw;
+}
+
+table {
+	font-family: 'Assistant', sans-serif;
+	border-spacing: 5px;
+	border: medium solid black;
+	margin: 25px auto;
+}
+
+thead,
+tfoot {
+	border-spacing: 5px;
+	border: medium solid black;
+	margin: 25px auto;
+}
+
+th {
+	font-weight: bolder;
+	border: 1px solid black;
+	padding: 10px;
+	max-width: 90px;
+}
+
+thead {
+	background-color: #e2a222;
+	font-weight: bolder;
+}
+
+tbody th {
+	background-color: #19814b;
+	border-right: 1px solid black;
+}
+
+tbody td {
+	background-color: #fad287;
+	color: rgb(65, 64, 64);
+}
+
+td {
+	padding: 10px;
+	border: 1px solid black;
+	max-width: 100px;
+	color: rgb(65, 64, 64);
+}
+
+tfoot {
+	background-color: #955C36;
+	font-weight: bolder;
+}
+
+form {
+	border: 5px solid black;
+	padding: 5px;
+	max-width: 300px;
+	margin: auto;
+}
+
+legend {
+	font-weight: bolder;
+	text-align: center;
+	margin: 10px;
+}
+
+label {
+	display: block;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 5px;
+}
+
+input {
+	display: block;
+	padding: 5px;
+	max-width: 300px;
+	margin: auto;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	text-align: center;
 }
