@@ -83,6 +83,10 @@ section.locations h2 {
 	flex-wrap: wrap;
 }
 
+article {
+	display: flex;
+}
+
 p.hours {
 	padding-left: 800px;
 	padding-right: 800px
@@ -102,7 +106,8 @@ h2.contact {
 section {
 	background-color: darkslategray;
 	margin: 1vw;
-	height: 300px
+	height: 400px;
+	padding: 15px;
 }
 
 p {
@@ -186,7 +191,6 @@ section {
 }
 
 footer {
-	height: 50px;
 	background-color: salmon;
 	margin-top: 1vw;
 	padding-top: 40px;
@@ -200,41 +204,12 @@ table {
 	border: medium solid black;
 	background-color: #19814b;
 	color: #000;
-	width: 900px;
+	width: 1000px;
 }
 
-
-thead tr th {
-
-	border: 1px solid black;
-	margin-left: 2px;
-	max-width: 30px;
-	display: flexbox;
+thead td {
+	display: flex;
 	justify-content: center;
-	text-align: justify;
-
-}
-
-thead tr th:nth-of-type(1) {
-
-	border: 1px solid black;
-	margin-left: 2px;
-	min-width: 99px;
-	display: flexbox;
-	justify-content: center;
-
-}
-
-tr th {
-	width: 97px;
-	text-align: justify;
-}
-
-tfoot {
-	border-spacing: px;
-	border: medium solid black;
-	margin-right: 2px auto;
-	width:
 }
 
 th {
@@ -252,11 +227,45 @@ thead {
 
 }
 
+thead tr th {
+
+	border: 1px solid black;
+	margin-left: 2px;
+	max-width: 30px;
+	display: flexbox;
+	justify-content: center;
+	text-align: justify;
+
+}
+
+thead tr th:nth-of-type(1) {
+
+	border: 1px solid black;
+	margin-left: 2px;
+	min-width: 62px;
+	display: flexbox;
+	justify-content: center;
+}
+
+tr th {
+	width: 60px;
+	text-align: justify;
+}
+
+tfoot {
+	border-spacing: px;
+	border: medium solid black;
+	margin-right: 2px auto;
+	width: 900px
+}
+
+
 tbody th {
 	background-color: darkolivegreen;
 	border-right: 1px solid black;
 
 }
+
 
 tbody td {
 	background-color: #fad287;
@@ -267,8 +276,8 @@ tbody td {
 td {
 	padding: 10px;
 	border: 1px solid black;
-	width: 30px;
-	color: black);
+	width: 40px;
+	color: black;
 }
 
 tfoot {
@@ -277,27 +286,28 @@ tfoot {
 	width: 900px;
 }
 
-/* form {
+
+form {
 	border: 5px solid black;
 	padding: 5px;
-	max-width: 300px;
+	width: 400px;
 	margin: auto;
-} */
+}
 
-/* legend {
+legend {
 	font-weight: bolder;
 	text-align: center;
 	margin: 10px;
-} */
+}
 
-/* label {
+label {
 	display: block;
 	text-align: center;
 	margin: auto;
 	margin-bottom: 5px;
-} */
+}
 
-/* input {
+input {
 	display: block;
 	padding: 5px;
 	max-width: 300px;
@@ -305,4 +315,9 @@ tfoot {
 	margin-bottom: 10px;
 	margin-top: 10px;
 	text-align: center;
-} */
+}
+
+button {
+	display: flex;
+	justify-content: center;
+}
