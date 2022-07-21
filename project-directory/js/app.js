@@ -1,25 +1,12 @@
 'use strict';
 
-// Instructions
-// Create a new branch for today’s lab. Make sure it has all of your changes from lab 06 so that you can extend the functionality.
-
-// Replace all of your object literals for the salmon cookie stand with a single constructor function that, when called with the ‘new’ keyword, it creates a new instance.
-
-// Replace the lists of your data for each store and build a single table of data instead. It should look similar to the following:
-
-// Display each stores data in a table format similar to what is below. Break each column by the hour and complete each row with a “Daily Location Total”.
-
-// Each cookie stand location should have a separate render() method that creates and appends its row to the table
-// The header row and footer row are each created in their own stand-alone function
-// NOTE: Please use a header cell for both the header row ( containing store hours ), and the footer row ( hourly and grand totals across all stores ).
-
-
 let storeTable = document.getElementById('store-table');
-// let tableHeader = document.getElementById('table-header');
 
 let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 let allLocations = [];
 let grandTotal = 0;
+let footerTotals = [];
+
 
 // minCPH = minimum customers per hour
 // maxCPH = maximum customers per hour
@@ -27,6 +14,7 @@ let grandTotal = 0;
 // avgCPC = average cookies per customer
 // hourlyTotalCookies = hourly totals
 // dailyTotalCookies = total per day
+
 // ******* CONSTRUCTOR REFACTOR ************
 
 function Location(name, minCPH, maxCPH, avgCookieSale){
@@ -40,7 +28,6 @@ function Location(name, minCPH, maxCPH, avgCookieSale){
   allLocations.push(this);
 }
 
-// ******** PROTOTYPE METHODS **************
 function multiply(a, b) { //eslint-disable-line
   let myProduct = Math.ceil(a * b);
   return myProduct;
@@ -95,13 +82,56 @@ let renderLocationTotals = function(){
   }
 };
 
-// function createTableHeader(){
-//   for(let i = 0; i <= storeHours.length; i++){
-//     let tcElem = document.createElement('tc');
-//     tcElem.textContent = storeHours[i];
-//     tableHeader.appendChild(tcElem);
-//   }
-// }
+let renderTableHeader = function() {
+  let thead = document.createElement('thead');
+  storeTable.appendChild(thead);
+
+  let tr = document.createElement('tr');
+  thead.appendChild(tr);
+
+  let th = document.createElement('th');
+  th.textcontent = 'Store Hours';
+  tr.appendChild(th);
+
+  for (let i=0; i < storeHours.length; i++) {
+    let th = document.createElement('th');
+    th.textContent = storeHours[i];
+    tr.appendChild(th);
+  }
+};
+
+let renderTableFooter = function() {
+  getFooterTotals();
+  let tfoot = document.createElement('tfoot');
+  storeTable.appendChild(tfoot);
+
+  let tr = document.createElement('tr');
+  tfoot.appendChild(tr);
+
+  let th = document.createElement('th');
+  th.textContent = 'Hourly Grand Totals';
+  tr.appendChild(th);
+
+  for (let i = 0; i < storeHours.length; i++) {
+    let td = document.createElement('td');
+    td.textContent = footerTotals[i];
+    tr.appendChild(td);
+  }
+
+};
+
+function getFooterTotals() {
+  footerTotals = [];
+  grandTotal = 0;
+  for (let i = 0; i < storeHours.length; i++) {
+    let hourTotal = 0;
+    for (let j = 0; j < allLocations.length; j++) {
+      hourTotal += allLocations[j].hourlyTotalCookies[i];
+    }
+    footerTotals.push(hourTotal);
+    grandTotal += hourTotal;
+  }
+}
 
 
 
@@ -111,6 +141,6 @@ new Location('Dubai', 11, 38, 3.7);
 new Location('Paris', 20, 38, 2.3);
 new Location('Lima', 2, 16, 4.6);
 
-// createTableHeader();
+renderTableHeader();
 renderLocationTotals();
-console.log(this.name);
+renderTableFooter();
