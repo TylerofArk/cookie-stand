@@ -136,7 +136,6 @@ function getFooterTotals() {
     let hourTotal = 0;
     for (let j = 0; j < allLocations.length; j++) {
       hourTotal += allLocations[j].hourlyTotalCookies[i];
-      grandTotal = grandTotal + allLocations[j].hourlyTotalCookies[i];
     }
     footerTotals.push(hourTotal);
     grandTotal += hourTotal;
