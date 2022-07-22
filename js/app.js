@@ -1,7 +1,7 @@
 'use strict';
 
 let storeTable = document.getElementById('store-table');
-let myForm = document.getElementById('myForm');
+let myForm = document.querySelector('#myform');
 let tfoot = document.createElement('tfoot');
 
 let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
@@ -110,7 +110,6 @@ let renderTableHeader = function() {
 
 let renderTableFooter = function() {
   getFooterTotals();
-  let tfoot = document.createElement('tfoot');
   storeTable.appendChild(tfoot);
 
   let tr = document.createElement('tr');
@@ -125,7 +124,9 @@ let renderTableFooter = function() {
     td.textContent = footerTotals[i];
     tr.appendChild(td);
   }
-
+  let td = document.createElement('td');
+  td.textContent = grandTotal;
+  tr.appendChild(td);
 };
 
 function getFooterTotals() {
@@ -144,14 +145,14 @@ function getFooterTotals() {
 
 // ***** NEW FOOTER / REMOVE FOOTER *****
 
-function handleSubmit(event) {
+function handleClick(event) {
   event.preventDefault();
   let locationName = event.target.location.value;
-  let minCust = parseInt(event.target.minCust.value);
-  let maxCust = parseInt(event.target.minCust.value);
+  let minCust = parseInt(event.target.mincust.value);
+  let maxCust = parseInt(event.target.mincust.value);
   let avgCookies = parseInt(event.target.avgcookies.value);
-  let newStore = new Location(locationName, minCust, maxCust, avgCookies);
-  newStore.render();
+  let newLocation = new Location(locationName, minCust, maxCust, avgCookies);
+  newLocation.render();
 
   document.getElementById('store-table').deleteRow(-1);
   renderTableFooter();
@@ -167,7 +168,8 @@ renderTableHeader();
 renderLocationTotals();
 renderTableFooter();
 
-myForm.addEventListener('submit', handleSubmit);
+console.log(myForm);
+myForm.addEventListener('submit', handleClick);
 
 
 
