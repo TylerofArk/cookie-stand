@@ -1,12 +1,15 @@
 'use strict';
 
 let storeTable = document.getElementById('store-table');
+let myForm = document.querySelector('#myform');
+let tfoot = document.createElement('tfoot');
 
 let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 let allLocations = [];
 let grandTotal = 0;
 let footerTotals = [];
 
+// ***** CONSTUCTOR LEGEND *****
 
 // minCPH = minimum customers per hour
 // maxCPH = maximum customers per hour
@@ -15,7 +18,7 @@ let footerTotals = [];
 // hourlyTotalCookies = hourly totals
 // dailyTotalCookies = total per day
 
-// ******* CONSTRUCTOR REFACTOR ************
+// ***** CONSTRUCTOR REFACTOR *****
 
 function Location(name, minCPH, maxCPH, avgCookieSale){
   this.name = name;
@@ -27,6 +30,8 @@ function Location(name, minCPH, maxCPH, avgCookieSale){
   this.dailyTotalCookies = 0;
   allLocations.push(this);
 }
+
+// ***** METHODS *****
 
 function multiply(a, b) { //eslint-disable-line
   let myProduct = Math.ceil(a * b);
@@ -54,6 +59,9 @@ Location.prototype.getHourlyTotal = function(){
 
 Location.prototype.render = function () {
   this.getHourlyTotal();
+
+
+  // ***** TABLE BUILD *****
 
   let table = document.createElement('table');
   storeTable.appendChild(table);
@@ -102,7 +110,6 @@ let renderTableHeader = function() {
 
 let renderTableFooter = function() {
   getFooterTotals();
-  let tfoot = document.createElement('tfoot');
   storeTable.appendChild(tfoot);
 
   let tr = document.createElement('tr');
@@ -117,7 +124,9 @@ let renderTableFooter = function() {
     td.textContent = footerTotals[i];
     tr.appendChild(td);
   }
-
+  let td = document.createElement('td');
+  td.textContent = grandTotal;
+  tr.appendChild(td);
 };
 
 function getFooterTotals() {
@@ -127,13 +136,27 @@ function getFooterTotals() {
     let hourTotal = 0;
     for (let j = 0; j < allLocations.length; j++) {
       hourTotal += allLocations[j].hourlyTotalCookies[i];
+      grandTotal = grandTotal + allLocations[j].hourlyTotalCookies[i];
     }
     footerTotals.push(hourTotal);
     grandTotal += hourTotal;
   }
 }
 
+// ***** NEW FOOTER / REMOVE FOOTER *****
 
+function handleClick(event) {
+  event.preventDefault();
+  let locationName = event.target.location.value;
+  let minCust = parseInt(event.target.mincust.value);
+  let maxCust = parseInt(event.target.mincust.value);
+  let avgCookies = parseInt(event.target.avgcookies.value);
+  let newLocation = new Location(locationName, minCust, maxCust, avgCookies);
+  newLocation.render();
+
+  document.getElementById('store-table').deleteRow(-1);
+  renderTableFooter();
+}
 
 new Location('Seattle', 23, 65, 6.3);
 new Location('Tokyo', 3, 24, 1.2);
@@ -144,3 +167,33 @@ new Location('Lima', 2, 16, 4.6);
 renderTableHeader();
 renderLocationTotals();
 renderTableFooter();
+
+console.log(myForm);
+myForm.addEventListener('submit', handleClick);
+
+
+
+
+// ***** Class Notes *****
+
+// ***** FORM EVENTS DEMO *****
+
+// Step 1: Grab the element I want to listen to
+// let myForm = document.getElementById('myForm');
+
+
+// Step 2: Attach my event listener
+// myForm.addEventListener('submit', handleSubmit);
+
+
+// Step 3: define our callback funtion or event handler
+// function handleSubmit(event){
+//   event.preventDefault();
+//   let name = event.target.firstName.value;
+// 	 let age = +event.target.age.value;
+// }
+
+
+// //  Step 2: Add the Event Listener - 2 args - event type, callback function = function that is passed into another function // event handler
+
+// myContainer.addEventListener('click', handleClick);
